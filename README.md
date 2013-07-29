@@ -4,7 +4,7 @@ For that, we use the awesome [Homebrew](http://mxcl.github.com/homebrew/index.ht
 
 ## Golo Formula
 
-[Golo](https://github.com/golo-lang/golo-lang), a lightweight dynamic language for the JVM.
+[Golo](https://github.com/golo-lang/golo-lang), a lightweight dynamic language for the JVM (version 0-preview6).
 
 ### Installation
 
