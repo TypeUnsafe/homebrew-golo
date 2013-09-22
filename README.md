@@ -15,8 +15,11 @@ $ brew tap rlespinasse/golo
 
 ```shell
 $ brew install golo
+```
 
-$ brew update && brew upgrade golo
+### Upgrade
+```shell
+$ brew update; brew upgrade golo
 ```
 
 ### Why Golo Formula isn't on Homebrew repository?
@@ -29,9 +32,26 @@ The Homebrew rules don't allow `Golo Formula` to be added on Homebrew repository
 
 ### Installation
 ```shell
-$ brew install --HEAD gogolo
+$ brew install --HEAD gogolo 
+```
 
-$ brew update && brew upgrade gogolo
+### Upgrade
+```shell
+$ brew update; brew rm gogolo; brew install --HEAD gogolo
+```
+
+## Golio Formula
+
+[golio](https://github.com/k33g/golio) is a golo script(s) downloader. It queries a "Content delivery network" : Golio.cdn. Golio.cdn is a directory of github repositories with golo scripts. The url of the directory is https://github.com/k33g/golio.cdn/blob/master/golio.cdn.json.
+
+### Installation
+```shell
+$ brew install --HEAD golio
+```
+
+### Upgrade
+```shell
+$ brew update; brew rm golio; brew install --HEAD golio
 ```
 
 ## Contribution
