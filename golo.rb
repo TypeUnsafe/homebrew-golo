@@ -5,7 +5,6 @@ class Golo < Formula
   url 'http://sourceforge.net/projects/golo-lang/files/0-preview6/golo-0-preview6-distribution.tar.gz'
   sha1 'd9fb4d82b21801ae4ecaac61bf723dafe848763c'
   version "0-preview6"
-  head 'https://github.com/golo-lang/golo-lang.git', :branch => 'master'
 
   def install
     rm_f Dir["bin/*.bat"]
