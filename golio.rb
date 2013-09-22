@@ -1,7 +1,7 @@
 require 'formula'
 
 class Golio < Formula
-  head 'https://github.com/rlespinasse/golio.git', :branch => 'master'
+  head 'https://github.com/k33g/golio.git', :branch => 'master'
 
   def install
     # setup absolute path for 'homebrew' golio
