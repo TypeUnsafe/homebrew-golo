@@ -9,7 +9,7 @@ $ brew tap rlespinasse/golo
 
 ## Golo Formula
 
-[Golo](https://github.com/golo-lang/golo-lang), a lightweight dynamic language for the JVM ([version 0-preview6](https://github.com/rlespinasse/homebrew/commit/e5cb3d4e476f1595ae880a1b79771581ab7790e9)).
+[Golo](https://github.com/golo-lang/golo-lang), a lightweight dynamic language for the JVM ([version 0-preview7](https://github.com/golo-lang/golo-lang/releases/tag/v0-preview7)).
 
 ### Installation
 
