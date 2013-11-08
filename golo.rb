@@ -2,9 +2,9 @@ require 'formula'
 
 class Golo < Formula
   homepage 'http://golo-lang.org'
-  url 'https://github.com/golo-lang/golo-lang/releases/download/v0-preview7/golo-0-preview7-distribution.tar.gz'
-  sha1 '522bd4a39544cd47b7a949d8df1d0387afac6a9f'
-  version "0-preview7"
+  url 'http://search.maven.org/remotecontent?filepath=org/golo-lang/golo/0-preview9/golo-0-preview9-distribution.tar.gz'
+  sha1 '3043714ca2d31572d2cbbcb86c44cdd85c40ecbf'
+  version "0-preview9"
 
   def install
     rm_f Dir["bin/*.bat"]
