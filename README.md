@@ -4,7 +4,7 @@ For that, we use the awesome [Homebrew](http://mxcl.github.com/homebrew/index.ht
 
 Before, please install the homebrew repository for golo
 ```shell
-$ brew tap rlespinasse/golo
+$ brew tap TypeUnsafe/golo
 ```
 
 ## Golo Formula
@@ -57,3 +57,10 @@ $ brew update; brew rm golio; brew install --HEAD golio
 ## Contribution
 
 Yes, you can.
+
+## Old repository 
+If you use 'rlespinasse/golo' before you just need to untap it before use this new one
+```shell
+$ brew untap rlespinasse/golo
+```
+
