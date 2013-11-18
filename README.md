@@ -64,3 +64,7 @@ If you use 'rlespinasse/golo' before you just need to untap it before use this n
 $ brew untap rlespinasse/golo
 ```
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/TypeUnsafe/homebrew-golo/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
