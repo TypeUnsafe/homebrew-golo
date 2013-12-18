@@ -12,10 +12,6 @@ class Golo < Formula
     prefix.install_metafiles
     libexec.install %w(bin doc lib samples)
     bin.install_symlink Dir["#{libexec}/bin/*"]
-    
-    bash_completion.install 'share/shell-completion/golo-bash-completion'
-    zsh_completion.install 'share/shell-completion/golo-zsh-completion'
-    cp "#{bash_completion}/golo-bash-completion", zsh_completion
   end
 
   def caveats
