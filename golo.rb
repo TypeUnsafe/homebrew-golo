@@ -2,16 +2,20 @@ require 'formula'
 
 class Golo < Formula
   homepage 'http://golo-lang.org'
-  url 'http://search.maven.org/remotecontent?filepath=org/golo-lang/golo/0-preview9/golo-0-preview9-distribution.tar.gz'
-  sha1 '3043714ca2d31572d2cbbcb86c44cdd85c40ecbf'
-  version "0-preview9"
-
+  url 'http://search.maven.org/remotecontent?filepath=org/golo-lang/golo/0-preview10/golo-0-preview10-distribution.tar.gz'
+  sha1 '4b77201081afa4cd404a11644480f11945d41396'
+  version "0-preview10"
+  
   def install
     rm_f Dir["bin/*.bat"]
 
     prefix.install_metafiles
     libexec.install %w(bin doc lib samples)
     bin.install_symlink Dir["#{libexec}/bin/*"]
+    
+    bash_completion.install 'share/shell-completion/golo-bash-completion'
+    zsh_completion.install 'share/shell-completion/golo-zsh-completion'
+    cp "#{bash_completion}/golo-bash-completion", zsh_completion
   end
 
   def caveats
