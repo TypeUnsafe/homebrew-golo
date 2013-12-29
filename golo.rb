@@ -10,7 +10,11 @@ class Golo < Formula
     rm_f Dir["bin/*.bat"]
 
     prefix.install_metafiles
+    
     bash_completion.install 'share/shell-completion/golo-bash-completion'
+    zsh_completion.install 'share/shell-completion/golo-zsh-completion' => '_golo'
+    cp "#{bash_completion}/golo-bash-completion", zsh_completion
+    
     libexec.install %w(bin doc lib share samples)
     bin.install_symlink Dir["#{libexec}/bin/*"]
   end
