@@ -12,6 +12,8 @@ class Golo < Formula
     prefix.install_metafiles
     libexec.install %w(bin doc lib share samples)
     bin.install_symlink Dir["#{libexec}/bin/*"]
+    
+    bash_completion.install 'share/shell-completion/golo-bash-completion'
   end
 
   def caveats
