@@ -10,7 +10,7 @@ class Golo < Formula
     rm_f Dir["bin/*.bat"]
 
     prefix.install_metafiles
-    libexec.install %w(bin doc lib samples)
+    libexec.install %w(bin doc lib share samples)
     bin.install_symlink Dir["#{libexec}/bin/*"]
   end
 
