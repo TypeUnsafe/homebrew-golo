@@ -1,6 +1,6 @@
 require 'formula'
 
-class m33ki < Formula
+class M33ki < Formula
   head 'https://github.com/TypeUnsafe/m33ki.git', :branch => 'master'
 
   def install
