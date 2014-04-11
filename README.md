@@ -16,15 +16,21 @@ $ brew tap TypeUnsafe/golo
 ```shell
 $ brew install golo
 ```
-#### Version SNAPSHOT
+#### ... in DEV version
 
 ```shell
 $ brew install golo --HEAD
 ```
 
 ### Upgrade
+
 ```shell
 $ brew update; brew upgrade golo
+```
+#### ... the DEV version
+
+```shell
+$ brew reinstall --HEAD golo
 ```
 
 ### Why Golo Formula isn't on Homebrew repository?
@@ -48,7 +54,7 @@ $ brew install --HEAD m33ki
 
 ### Upgrade
 ```shell
-$ brew update; brew rm m33ki; brew install --HEAD m33ki
+$ brew reinstall --HEAD m33ki
 ```
 
 ## Gogolo Formula
@@ -62,7 +68,7 @@ $ brew install --HEAD gogolo
 
 ### Upgrade
 ```shell
-$ brew update; brew rm gogolo; brew install --HEAD gogolo
+$ brew reinstall --HEAD gogolo
 ```
 
 ## Golio Formula
@@ -76,7 +82,7 @@ $ brew install --HEAD golio
 
 ### Upgrade
 ```shell
-$ brew update; brew rm golio; brew install --HEAD golio
+$ brew reinstall --HEAD golio
 ```
 
 ## Contribution
