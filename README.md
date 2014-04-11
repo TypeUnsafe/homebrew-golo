@@ -16,6 +16,11 @@ $ brew tap TypeUnsafe/golo
 ```shell
 $ brew install golo
 ```
+#### Version SNAPSHOT
+
+```shell
+$ brew install golo --HEAD
+```
 
 ### Upgrade
 ```shell
@@ -38,7 +43,7 @@ Built on Golo and SparkJava (and some other libraries), M33ki provides minimal r
 
 ### Installation
 ```shell
-$ brew install --HEAD m33ki 
+$ brew install --HEAD m33ki
 ```
 
 ### Upgrade
@@ -52,7 +57,7 @@ $ brew update; brew rm m33ki; brew install --HEAD m33ki
 
 ### Installation
 ```shell
-$ brew install --HEAD gogolo 
+$ brew install --HEAD gogolo
 ```
 
 ### Upgrade
@@ -78,7 +83,7 @@ $ brew update; brew rm golio; brew install --HEAD golio
 
 Yes, you can.
 
-## Old repository 
+## Old repository
 If you use 'rlespinasse/golo' before you just need to untap it before use this new one
 ```shell
 $ brew untap rlespinasse/golo
