@@ -2,6 +2,8 @@ require 'formula'
 
 class M33ki < Formula
   head 'https://github.com/TypeUnsafe/m33ki.git', :branch => 'master'
+  
+  depends_on 'golo'
 
   def install
 
