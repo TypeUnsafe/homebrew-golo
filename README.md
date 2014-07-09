@@ -9,7 +9,7 @@ $ brew tap TypeUnsafe/golo
 
 ## Golo Formula
 
-[Golo](https://github.com/golo-lang/golo-lang), a lightweight dynamic language for the JVM ([version 0-preview11](https://github.com/golo-lang/golo-lang/releases/tag/v0-preview11)).
+[Golo](https://github.com/golo-lang/golo-lang), a lightweight dynamic language for the JVM ([version 1.0.0](https://github.com/golo-lang/golo-lang/releases/tag/v1.0.0)).
 
 ### Installation
 
