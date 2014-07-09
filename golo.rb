@@ -2,9 +2,9 @@ require 'formula'
 
 class Golo < Formula
   homepage 'http://golo-lang.org'
-  url 'http://search.maven.org/remotecontent?filepath=org/golo-lang/golo/0-preview12/golo-0-preview12-distribution.tar.gz'
-  sha1 '6a46f3bdc5979e6ec0abaf6a6fd42a2d6e1e9bed'
-  version "0-preview12"
+  url 'http://search.maven.org/remotecontent?filepath=org/golo-lang/golo/1.0.0/golo-1.0.0-distribution.tar.gz'
+  sha1 'ee7492bf2e3aa63140ad4f4abece100bb6dbf4ad'
+  version "1.0.0"
 
   head do
     # SNAPSHOT version
