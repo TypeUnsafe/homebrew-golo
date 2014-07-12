@@ -48,6 +48,7 @@ class Golo < Formula
 
     rm_f Dir["#{libexec}/bin/*.bat"]
     bin.install_symlink Dir["#{libexec}/bin/*"]
+    ENV["GOLO_HOME"] = "#{libexec}"
 
     if build.with? "completions"
       bash_completion.install "#{libexec}/share/shell-completion/golo-bash-completion"
@@ -57,9 +58,6 @@ class Golo < Formula
         cp "#{bash_completion}/golo-bash-completion", zsh_completion
       end
     end
-    
-    ENV["GOLO_HOME"] = "#{libexec}"
-
   end
 
   def caveats
