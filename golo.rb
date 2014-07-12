@@ -52,23 +52,23 @@ class Golo < Formula
     if build.with? "completions"
       bash_completion.install "#{libexec}/share/shell-completion/golo-bash-completion"
 	  
-	  if ENV["SHELL"] == "zsh"
+      if ENV["SHELL"] == "/bin/zsh"
         zsh_completion.install "#{libexec}/share/shell-completion/golo-zsh-completion" => "_golo"
         cp "#{bash_completion}/golo-bash-completion", zsh_completion
       end
-	end
+    end
     
-    ENV.append "GOLO_HOME", "#{libexec}"
+    ENV["GOLO_HOME"] = "#{libexec}"
 
   end
 
   def caveats
     s = <<-EOS.undent
-	  Golo requires Java 7; you will need to install an appropriate JDK.
-      the environment variable GOLO_HOME is set to #{libexec}
+      Golo requires Java 7; you will need to install an appropriate JDK.
+      The environment variable GOLO_HOME is set to #{libexec}
     EOS
 	  
-	if ENV["SHELL"] == "zsh"
+    if ENV["SHELL"] == "/bin/zsh"
       s << "\n" << zsh_caveats if build.with? "completions"
     end
 	
