@@ -48,7 +48,8 @@ class Golo < Formula
 
     rm_f Dir["#{libexec}/bin/*.bat"]
     bin.install_symlink Dir["#{libexec}/bin/*"]
-    ENV["GOLO_HOME"] = "#{libexec}"
+    golo_home = "#{libexec}"
+    ENV["GOLO_HOME"] = golo_home
 
     if build.with? "completions"
       bash_completion.install "#{libexec}/share/shell-completion/golo-bash-completion"
