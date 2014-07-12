@@ -1,19 +1,34 @@
-require 'formula'
+require "formula"
 
-class Golo < Formula
-  homepage 'http://golo-lang.org'
-  url 'http://search.maven.org/remotecontent?filepath=org/golo-lang/golo/1.0.0/golo-1.0.0-distribution.tar.gz'
-  sha1 'ee7492bf2e3aa63140ad4f4abece100bb6dbf4ad'
-  version "1.0.0"
+class JavaRequirement < Requirement
+  fatal true
 
-  head do
-    # SNAPSHOT version
-    url "https://github.com/golo-lang/golo-lang.git"
-
-    depends_on 'maven'
+  satisfy :build_env => false do
+    system "/usr/libexec/java_home", "-v", "1.7"
   end
 
-  option 'without-completions', 'Disable bash/zsh completions'
+  def message; <<-EOS.undent
+    Could not find a JDK (i.e. not a JRE)
+
+    Do one of the following:
+    - install a JDK that is detected with /usr/libexec/java_home
+    - set the JAVA_HOME environment variable
+    EOS
+  end
+end
+
+class Golo < Formula
+  homepage "http://golo-lang.org"
+  url "http://search.maven.org/remotecontent?filepath=org/golo-lang/golo/1.0.0/golo-1.0.0-distribution.tar.gz"
+  sha1 "ee7492bf2e3aa63140ad4f4abece100bb6dbf4ad"
+
+  head do
+    url "https://github.com/golo-lang/golo-lang.git"
+    depends_on "maven"
+  end
+  
+  depends_on JavaRequirement
+  option "without-completions", "Disable bash/zsh completions"
 
   def install
 
@@ -25,8 +40,8 @@ class Golo < Formula
       libexec.install %w(share samples target/appassembler/bin target/appassembler/lib)
 
       # workaround with --HEAD -> permissions are a mess
-      (libexec/'bin/golo').chmod 0755
-      (libexec/'bin/vanilla-golo').chmod 0755
+      (libexec/"bin/golo").chmod 0755
+      (libexec/"bin/vanilla-golo").chmod 0755
     else
       libexec.install %w(bin doc lib share samples)
     end
@@ -34,24 +49,30 @@ class Golo < Formula
     rm_f Dir["#{libexec}/bin/*.bat"]
     bin.install_symlink Dir["#{libexec}/bin/*"]
 
-    if build.with? 'completions'
+    if build.with? "completions"
       bash_completion.install "#{libexec}/share/shell-completion/golo-bash-completion"
-      zsh_completion.install "#{libexec}/share/shell-completion/golo-zsh-completion" => '_golo'
-      cp "#{bash_completion}/golo-bash-completion", zsh_completion
-    end
+	  
+	  if ENV["SHELL"] == "zsh"
+        zsh_completion.install "#{libexec}/share/shell-completion/golo-zsh-completion" => "_golo"
+        cp "#{bash_completion}/golo-bash-completion", zsh_completion
+      end
+	end
+    
+    ENV.append "GOLO_HOME", "#{libexec}"
 
   end
 
   def caveats
     s = <<-EOS.undent
-      You should set-up JAVA_HOME to the valid JDK 7.0 (or newest)
-
-      You should set the environment variable GOLO_HOME to
-        #{libexec}
+	  Golo requires Java 7; you will need to install an appropriate JDK.
+      the environment variable GOLO_HOME is set to #{libexec}
     EOS
-
-    s << "\n" << zsh_caveats if build.with? 'completions'
-    return s
+	  
+	if ENV["SHELL"] == "zsh"
+      s << "\n" << zsh_caveats if build.with? "completions"
+    end
+	
+    s
   end
 
   def zsh_caveats; <<-EOS.undent
