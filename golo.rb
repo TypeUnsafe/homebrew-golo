@@ -68,14 +68,14 @@ class Golo < Formula
     EOS
 	  
     if ENV["SHELL"].include? "zsh"
-      s << zsh_caveats if build.with? "completions"
+      s << "\n" << zsh_caveats if build.with? "completions"
     end
 	
     s
   end
 
   def zsh_caveats; <<-EOS.undent
-    For ZSH users, please add "golo" in yours plugins in ".zshrc"
+    	For ZSH users, please add "golo" in yours plugins in ".zshrc"
     EOS
   end
 end
