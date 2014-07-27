@@ -49,7 +49,6 @@ class Golo < Formula
     rm_f Dir["#{libexec}/bin/*.bat"]
     bin.install_symlink Dir["#{libexec}/bin/*"]
     ENV["GOLO_HOME"] = libexec
-    bin.install libexec/"bin/gant"
     bin.env_script_all_files(libexec+"bin", :GOLO_HOME => ENV["GOLO_HOME"])
 
     if build.with? "completions"
