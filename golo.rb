@@ -62,6 +62,20 @@ class Golo < Formula
     end
   end
 
+  def caveats
+    s = <<-EOS.undent
+    	Golo — a lightweight dynamic language for the JVM.	
+    	The world didn't need another JVM language. 
+    	So we built yet another one. A simple one.
+    EOS
+	  
+    if ENV["SHELL"].include? "zsh"
+      s << zsh_caveats if build.with? "completions"
+    end
+	
+    s
+  end
+
   def zsh_caveats; <<-EOS.undent
     For ZSH users, please add "golo" in yours plugins in ".zshrc"
     EOS
