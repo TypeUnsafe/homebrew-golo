@@ -48,29 +48,18 @@ class Golo < Formula
 
     rm_f Dir["#{libexec}/bin/*.bat"]
     bin.install_symlink Dir["#{libexec}/bin/*"]
-    ENV["GOLO_HOME"] = "#{libexec}"
+    ENV["GOLO_HOME"] = libexec
+    bin.install libexec/"bin/gant"
+    bin.env_script_all_files(libexec+"bin", :GOLO_HOME => ENV["GOLO_HOME"])
 
     if build.with? "completions"
       bash_completion.install "#{libexec}/share/shell-completion/golo-bash-completion"
 	  
-      if ENV["SHELL"] == "/bin/zsh"
+      if ENV["SHELL"].include? "zsh"
         zsh_completion.install "#{libexec}/share/shell-completion/golo-zsh-completion" => "_golo"
         cp "#{bash_completion}/golo-bash-completion", zsh_completion
       end
     end
-  end
-
-  def caveats
-    s = <<-EOS.undent
-      Golo requires Java 7; you will need to install an appropriate JDK.
-      The environment variable GOLO_HOME is set to #{libexec}
-    EOS
-	  
-    if ENV["SHELL"] == "/bin/zsh"
-      s << "\n" << zsh_caveats if build.with? "completions"
-    end
-	
-    s
   end
 
   def zsh_caveats; <<-EOS.undent
