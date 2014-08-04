@@ -38,10 +38,6 @@ class Golo < Formula
 
       # specific installation (bin and lib are in the target/ folder)
       libexec.install %w(share samples target/appassembler/bin target/appassembler/lib)
-
-      # workaround with --HEAD -> permissions are a mess
-      (libexec/"bin/golo").chmod 0755
-      (libexec/"bin/vanilla-golo").chmod 0755
     else
       libexec.install %w(bin doc lib share samples)
     end
@@ -49,33 +45,16 @@ class Golo < Formula
     rm_f Dir["#{libexec}/bin/*.bat"]
     ENV["GOLO_HOME"] = libexec
     bin.env_script_all_files(libexec+"bin", :GOLO_HOME => ENV["GOLO_HOME"])
-
-    if build.with? "completions"
-      bash_completion.install "#{libexec}/share/shell-completion/golo-bash-completion"
-	  
-      if ENV["SHELL"].include? "zsh"
-        zsh_completion.install "#{libexec}/share/shell-completion/golo-zsh-completion" => "_golo"
-        cp "#{bash_completion}/golo-bash-completion", zsh_completion
-      end
-    end
-  end
-
-  def caveats
-    s = <<-EOS.undent
-    	Golo — a lightweight dynamic language for the JVM.	
-    	The world didn't need another JVM language. 
-    	So we built yet another one. A simple one.
-    EOS
-	  
+    bash_completion.install "#{libexec}/share/shell-completion/golo-bash-completion"
+  
     if ENV["SHELL"].include? "zsh"
-      s << "\n" << zsh_caveats if build.with? "completions"
+      zsh_completion.install "#{libexec}/share/shell-completion/golo-zsh-completion" => "_golo"
+      cp "#{bash_completion}/golo-bash-completion", zsh_completion
     end
-	
-    s
   end
 
-  def zsh_caveats; <<-EOS.undent
-    	For ZSH users, please add "golo" in yours plugins in ".zshrc"
+  def caveats; <<-EOS.undent
+For ZSH users, please add "golo" in yours plugins in ".zshrc"
     EOS
   end
 end
