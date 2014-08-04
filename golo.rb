@@ -28,7 +28,6 @@ class Golo < Formula
   end
   
   depends_on JavaRequirement
-  option "without-completions", "Disable bash/zsh completions"
 
   def install
 
