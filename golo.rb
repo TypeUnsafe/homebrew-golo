@@ -27,33 +27,30 @@ class Golo < Formula
     depends_on "maven"
   end
   
+  depends_on :java
   depends_on JavaRequirement
 
   def install
-
     if build.head?
-      # see https://github.com/golo-lang/golo-lang#building-from-sources
       rake "special:bootstrap"
-
-      # specific installation (bin and lib are in the target/ folder)
-      libexec.install %w(share samples target/appassembler/bin target/appassembler/lib)
+      libexec.install %w(target/appassembler/bin target/appassembler/lib)
     else
-      libexec.install %w(bin doc lib share samples)
+      libexec.install %w(bin doc lib)
     end
+    libexec.install %w(share samples)
 
     rm_f Dir["#{libexec}/bin/*.bat"]
-    ENV["GOLO_HOME"] = libexec
-    bin.env_script_all_files(libexec+"bin", :GOLO_HOME => ENV["GOLO_HOME"])
+    bin.env_script_all_files(libexec+"bin", :GOLO_HOME => libexec)
     bash_completion.install "#{libexec}/share/shell-completion/golo-bash-completion"
   
-    if ENV["SHELL"].include? "zsh"
-      zsh_completion.install "#{libexec}/share/shell-completion/golo-zsh-completion" => "_golo"
-      cp "#{bash_completion}/golo-bash-completion", zsh_completion
-    end
+    zsh_completion.install "#{libexec}/share/shell-completion/golo-zsh-completion" => "_golo"
+    cp "#{bash_completion}/golo-bash-completion", zsh_completion
   end
 
-  def caveats; <<-EOS.undent
+  def caveats
+    if ENV["SHELL"].include? "zsh" then <<-EOS.undent
 For ZSH users, please add "golo" in yours plugins in ".zshrc"
-    EOS
+      EOS
+    end
   end
 end
