@@ -1,22 +1,5 @@
 require "formula"
 
-class JavaRequirement < Requirement
-  fatal true
-
-  satisfy :build_env => false do
-    system "/usr/libexec/java_home", "-v", "1.7"
-  end
-
-  def message; <<-EOS.undent
-    Could not find a JDK (i.e. not a JRE)
-
-    Do one of the following:
-    - install a JDK that is detected with /usr/libexec/java_home
-    - set the JAVA_HOME environment variable
-    EOS
-  end
-end
-
 class Golo < Formula
   homepage "http://golo-lang.org"
   url "http://search.maven.org/remotecontent?filepath=org/golo-lang/golo/1.0.0/golo-1.0.0-distribution.tar.gz"
@@ -27,8 +10,7 @@ class Golo < Formula
     depends_on "maven"
   end
   
-  depends_on :java
-  depends_on JavaRequirement
+  depends_on :java => "1.7"
 
   def install
     if build.head?
@@ -42,7 +24,6 @@ class Golo < Formula
     rm_f Dir["#{libexec}/bin/*.bat"]
     bin.env_script_all_files(libexec+"bin", :GOLO_HOME => libexec)
     bash_completion.install "#{libexec}/share/shell-completion/golo-bash-completion"
-  
     zsh_completion.install "#{libexec}/share/shell-completion/golo-zsh-completion" => "_golo"
     cp "#{bash_completion}/golo-bash-completion", zsh_completion
   end
