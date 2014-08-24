@@ -21,8 +21,9 @@ class Golo < Formula
     end
     libexec.install %w(share samples)
 
-    rm_f Dir["#{libexec}/bin/*.bat"]
+    prefix.install "bin"
     bin.env_script_all_files(libexec+"bin", :GOLO_HOME => libexec)
+    rm_f Dir["#{libexec}/bin/*.bat"]
     bin.install_symlink Dir["#{libexec}/bin/*"]
     bash_completion.install "#{libexec}/share/shell-completion/golo-bash-completion"
     zsh_completion.install "#{libexec}/share/shell-completion/golo-zsh-completion" => "_golo"
