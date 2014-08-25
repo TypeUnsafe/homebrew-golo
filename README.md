@@ -1,41 +1,11 @@
-# Golo on OSX
+# TypeUnsafe projects on OSX
 
 For that, we use the awesome [Homebrew](http://mxcl.github.com/homebrew/index.html).
 
-Before, please install the homebrew repository for golo
+Before, please install the homebrew repository for golo projects
 ```shell
 $ brew tap TypeUnsafe/golo
 ```
-
-## Golo Formula
-
-[Golo](https://github.com/golo-lang/golo-lang), a lightweight dynamic language for the JVM ([version 1.0.0](https://github.com/golo-lang/golo-lang/releases/tag/v1.0.0)).
-
-### Installation
-
-```shell
-$ brew install golo
-```
-#### ... in DEV version
-
-```shell
-$ brew install golo --HEAD
-```
-
-### Upgrade
-
-```shell
-$ brew update; brew upgrade golo
-```
-#### ... the DEV version
-
-```shell
-$ brew reinstall --HEAD golo
-```
-
-### Why Golo Formula isn't on Homebrew repository?
-
-The Homebrew rules don't allow `Golo Formula` to be added on Homebrew repository until a stable release. ([more info](https://github.com/mxcl/homebrew/pull/18768))
 
 ## M33ki Formula
 
@@ -61,8 +31,3 @@ $ brew reinstall --HEAD m33ki
 
 Yes, you can.
 
-## Old repository
-If you use 'rlespinasse/golo' before you just need to untap it before use this new one
-```shell
-$ brew untap rlespinasse/golo
-```
